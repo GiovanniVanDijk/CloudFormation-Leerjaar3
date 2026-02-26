@@ -1,11 +1,19 @@
 Description: Eerste VPC opzet
+
 Resources:
   MyfirstVPC:
-    Type: AWS::EC2::VPC
+    Type: 'AWS::EC2::VPC'
     Properties:
       CidrBlock: 10.0.0.0/16
       Tags:
-        - Key: Myvpc
+        - Key: Name            
           Value: MyfirstVPC
         - Key: omgeving
           Value: productie
+
+Outputs:
+  VpcId:
+    Description: de id van de vpc
+    Value: !Ref MyfirstVPC
+    Export:
+      Name: MyVPC-Id

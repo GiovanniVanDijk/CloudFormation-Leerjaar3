@@ -1,0 +1,10 @@
+Description: create a Database 
+Resources:
+  MyDataBase:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceClass: db.t3.micro
+      Engine: sqlserver-ex
+      AllocatedStorage: '20'
+      MasterUsername: admin
+      MasterUserPassword: 'Welkom01!'

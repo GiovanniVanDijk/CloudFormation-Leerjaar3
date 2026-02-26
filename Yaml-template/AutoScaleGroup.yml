@@ -1,0 +1,16 @@
+Description: create a Auto scale group
+Resources:
+  AutoScalingGroup: #we need this for te Ref Below
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      LaunchConfigurationName: !Ref <name of the config>
+      MinSize: '2'
+      MaxSize: '10'
+      VPCZoneIdentifier: [ !Ref PublicSubnetA]
+
+ScaleUpRule:
+  Type: AWS::AutoScaling::ScheduledAction
+  Properties:
+    AutoScalingGroupName: !Ref AutoScalingGroup #matched the name above
+    DesiredCapacity: 5
+    Recurrence: "<Give the time when>"
