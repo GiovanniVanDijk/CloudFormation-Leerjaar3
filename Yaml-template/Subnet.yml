@@ -1,0 +1,18 @@
+Description: create a Subnet.
+Resources:
+  PublicSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !ImportValue MyVPC-Id
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [ 0, !GetAZs '' ] # met ) geef je de eerste AZ aan dus voor high availibility moet de volgende subnet 1 zijn
+      Tags:
+        - Key: Name
+          Value: MySubnetA
+
+Outputs:
+  SubnetAId:
+    Description: ID van subnet A
+    Value: !Ref PublicSubnetA
+    Export: 
+      Name: MySubnetA-Id
