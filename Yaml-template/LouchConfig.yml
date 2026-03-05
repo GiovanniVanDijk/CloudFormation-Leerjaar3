@@ -1,0 +1,13 @@
+Description: create a Louchconfig for a Application
+Resources:
+  Louchconfig:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Properties:
+      ImageId: 
+      InstanceType: t3.micro
+      SecurityGroups:
+        - !ImportValue SecurityGroupId-HTTP
+      UserData: 
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          <hier de code dat uitgevoerd moet worden> 

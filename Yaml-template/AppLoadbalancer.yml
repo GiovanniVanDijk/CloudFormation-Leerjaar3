@@ -1,0 +1,9 @@
+Description: create a application loadbalancer
+Resources:
+  ApplicationLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Subnets: 
+        - !Ref PublicSubnetA # kijkt naar de naam meteen onder de resource
+        - !Ref PublicSubnetB
+      SecurityGroups: [ !Ref SecurityGroupId-HTTP ]
